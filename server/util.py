@@ -48,7 +48,7 @@ def load_saved_artifacts():
         with open('./artifacts/saved_model.pkl', 'rb') as f:
             __model = joblib.load(f)
     print("loading saved artifacts...done")
-    
+
 def get_cv2_image_from_base64_string(b64str):
     '''
     credit: https://stackoverflow.com/questions/33754935/read-a-base-64-encoded-image-from-memory-using-opencv-python-library
@@ -61,8 +61,8 @@ def get_cv2_image_from_base64_string(b64str):
     return img
 
 def get_cropped_image_if_2_eyes(image_path, image_base64_data):
-    face_cascade = cv2.CascadeClassifier('./opencv/haarcascades/haarcascade_frontalface_default.xml')
-    eye_cascade = cv2.CascadeClassifier('./opencv/haarcascades/haarcascade_eye.xml')
+    face_cascade = cv2.CascadeClassifier('./haarcascades/haarcascade_frontalface_default.xml')
+    eye_cascade = cv2.CascadeClassifier('./haarcascades/haarcascade_eye.xml')
 
     if image_path:
         img = cv2.imread(image_path)
@@ -87,3 +87,6 @@ def get_b64_test_image_for_virat():
 
 if __name__ == '__main__':
     load_saved_artifacts()
+    print(classify_image(None, "./test_images/josh_test2.jpg"))
+    print(classify_image(None, "./test_images/kim-sejong_test1.jpg"))
+    print(classify_image(None, "./test_images/josh_test1.jpg"))
